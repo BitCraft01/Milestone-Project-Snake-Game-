@@ -9,6 +9,7 @@ const gOver = document.querySelector("#gOver");
 console.log(gOver);
 const gOverScore = document.querySelector("#gOverScore")
 
+const buttonR = document.querySelector("#buttonR")
 
 
 let score = 0
@@ -17,7 +18,14 @@ function scoreCount(){
     const scoreNum = document.querySelector("#scoreNum")
     scoreNum.innerHTML = score
 }
-
+function init(){
+    snakeBody = [];
+    speedX = 0
+    speedY = 0
+    snakeX = gridSquare * 5;
+    snakeY = gridSquare * 5;
+    score = 0
+}
 
 //Function to generate grid
 window.onload = () => {
@@ -36,9 +44,7 @@ window.onload = () => {
             https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect */
 //Function to keep redrawing the canvas
 function update(){
-    if(gOver.style.display == "block"){
-        return;
-    }
+    
     context.fillStyle = "black"
     context.fillRect(0, 0, grid.width, grid.height)
 
@@ -74,19 +80,32 @@ function update(){
         gOver.style.display ="block"
         gOverScore.innerHTML = score;
         
+        
     }
     for(let i = 0; i < snakeBody.length; i++){
         if(snakeX === snakeBody[i][0] && snakeY === snakeBody[i][1]){
             gOver.style.display = "block"
             gOverScore.innerHTML = score;
+            
         }
     }
 }
+
+buttonR.addEventListener("click", function restart(){
+    
+    init()
+    update()
+    gOver.style.display = "none"
+    treatPosition()
+    
+    
+})
 
 //Generating the snake
 let snakeBody = []
 let snakeX = gridSquare * 5;
 let snakeY = gridSquare * 5;
+
 
 //Declaring snake treats
 let treatX
@@ -102,3 +121,4 @@ function treatPosition(){
     treatY = Math.floor(Math.random() * row) * gridSquare
     
 }
+

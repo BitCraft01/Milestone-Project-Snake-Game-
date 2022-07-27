@@ -12,7 +12,7 @@ body {
     user-select: none;
 }
 h1{
-    height: 5px
+   margin-bottom: 1px;
 }
 
 #gOver{
@@ -44,4 +44,18 @@ p{
     margin: 0;
     font-size: 14px;
     color: gray
+}
+
+#buttonR {
+    margin-top: 12px;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h3{
+   margin-top: 5px 
 }
