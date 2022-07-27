@@ -14,7 +14,7 @@ window.onload = () => {
     context = grid.getContext("2d")
     treatPosition()
     document.addEventListener("keyup", movementChange)
-    update()
+    setInterval(update, 1000/50)
 }
 //Load window
 
