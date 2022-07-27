@@ -20,7 +20,7 @@ window.onload = () => {
 
 /* Sources: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle
             https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect */
-//Function to keep redrawing
+//Function to keep redrawing the canvas
 function update(){
     context.fillStyle = "black"
     context.fillRect(0, 0, grid.width, grid.height)
@@ -28,18 +28,28 @@ function update(){
     context.fillStyle ="red"
     context.fillRect(treatX, treatY, gridSquare, gridSquare)
     if(snakeX === treatX && snakeY === treatY){
+        snakeBody.push([treatX, treatY])
         treatPosition()
+    }
+    for(let i = snakeBody.length - 1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i - 1];
+    }if(snakeBody.length){
+        snakeBody[0] = [snakeX, snakeY]
     }
 
     context.fillStyle = "Lime"
     snakeX += speedX * gridSquare
     snakeY += speedY * gridSquare
     context.fillRect(snakeX, snakeY, gridSquare, gridSquare)
+    for(let i = 0; i < snakeBody.length; i++){
+        context.fillRect(snakeBody[i][0], snakeBody[i][1], gridSquare, gridSquare)
+    }
 
     
 }
 
 //Generating the snake
+let snakeBody = []
 let snakeX = gridSquare * 5;
 let snakeY = gridSquare * 5;
 
