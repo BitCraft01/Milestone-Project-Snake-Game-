@@ -1,3 +1,11 @@
 body {
     text-align: center;
 }
+#score{
+    position: absolute;
+    left: 27em;
+    color: white;
+    padding: 5px;
+    font-family: sans-serif;
+    user-select: none;
+}
