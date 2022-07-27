@@ -25,13 +25,18 @@ function update(){
     context.fillStyle = "black"
     context.fillRect(0, 0, grid.width, grid.height)
 
+    context.fillStyle ="red"
+    context.fillRect(treatX, treatY, gridSquare, gridSquare)
+    if(snakeX === treatX && snakeY === treatY){
+        treatPosition()
+    }
+
     context.fillStyle = "Lime"
     snakeX += speedX * gridSquare
     snakeY += speedY * gridSquare
     context.fillRect(snakeX, snakeY, gridSquare, gridSquare)
 
-    context.fillStyle ="red"
-    context.fillRect(treatX, treatY, gridSquare, gridSquare)
+    
 }
 
 //Generating the snake
