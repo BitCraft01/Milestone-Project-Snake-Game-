@@ -14,7 +14,7 @@ window.onload = () => {
     context = grid.getContext("2d")
     treatPosition()
     document.addEventListener("keyup", movementChange)
-    setInterval(update, 1000/50)
+    setInterval(update, 2000/15)
 }
 //Load window
 
@@ -26,8 +26,8 @@ function update(){
     context.fillRect(0, 0, grid.width, grid.height)
 
     context.fillStyle = "Lime"
-    snakeX += speedX
-    snakeY += speedY
+    snakeX += speedX * gridSquare
+    snakeY += speedY * gridSquare
     context.fillRect(snakeX, snakeY, gridSquare, gridSquare)
 
     context.fillStyle ="red"
