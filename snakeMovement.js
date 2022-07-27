@@ -11,5 +11,8 @@ function movementChange(e){
     }else if(e.code === "ArrowRight" && speedX != -1){
         speedX = 1
         speedY = 0
+    }else if(gOver.style.display === "block"){
+        speedX = 0
+        speedY = 0
     }
 }

@@ -5,14 +5,17 @@ let row = 20
 let column = 20
 let context
 
-let gameOver = false;
+const gOver = document.querySelector("#gOver");
+console.log(gOver);
+const gOverScore = document.querySelector("#gOverScore")
+
+
+
 let score = 0
 function scoreCount(){
     score++
     const scoreNum = document.querySelector("#scoreNum")
     scoreNum.innerHTML = score
-
-
 }
 
 
@@ -33,7 +36,7 @@ window.onload = () => {
             https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect */
 //Function to keep redrawing the canvas
 function update(){
-    if(gameOver){
+    if(gOver.style.display == "block"){
         return;
     }
     context.fillStyle = "black"
@@ -68,12 +71,14 @@ function update(){
 
     //Collision detection
     if(snakeX < 0 || snakeX > column * gridSquare || snakeY < 0 || snakeY > row * gridSquare){
-        gameOver = true;
-        alert("Game Over")
+        gOver.style.display ="block"
+        gOverScore.innerHTML = score;
+        
     }
     for(let i = 0; i < snakeBody.length; i++){
         if(snakeX === snakeBody[i][0] && snakeY === snakeBody[i][1]){
-            alert("Game Over")
+            gOver.style.display = "block"
+            gOverScore.innerHTML = score;
         }
     }
 }

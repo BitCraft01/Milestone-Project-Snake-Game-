@@ -1,11 +1,47 @@
 body {
     text-align: center;
+    font-family: sans-serif;
+    
 }
 #score{
     position: absolute;
     left: 27em;
     color: white;
     padding: 5px;
-    font-family: sans-serif;
+    
     user-select: none;
+}
+h1{
+    height: 5px
+}
+
+#gOver{
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 5px; 
+}
+
+label{
+    font-size: 14px;
+    color: gray;
+}
+
+h2{
+    font-size: 48px;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+p{
+    margin: 0;
+    font-size: 14px;
+    color: gray
 }

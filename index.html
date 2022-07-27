@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Browser Snake Game</title>
     <link rel="stylesheet" href="main.css" />
-    <script src="index.js"></script>
-    <script src="snakeMovement.js"></script>
   </head>
   <body>
     <h1>The Infamous Snake Game</h1>
+    <h3>Press Any Arrow Key to Start</h3>
+    <h4>Press CRTL + R to Restart or Play Again</h4>
     <div id="score">
       <span>Score: <span id="scoreNum">0</span></span>
     </div>
     <!--From MDN Mozilla: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API-->
+    <div id="gOver">
+      <label>Game Over</label>
+      <h2 id="gOverScore">0</h2>
+      <p>Points</p>
+    </div>
     <canvas id="grid"></canvas>
+    <script src="index.js"></script>
+    <script src="snakeMovement.js"></script>
   </body>
 </html>
