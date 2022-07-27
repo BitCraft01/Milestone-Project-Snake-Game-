@@ -13,7 +13,7 @@ window.onload = () => {
     //Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
     context = grid.getContext("2d")
     treatPosition()
-    
+    document.addEventListener("keyup", movementChange)
     update()
 }
 //Load window
@@ -26,6 +26,8 @@ function update(){
     context.fillRect(0, 0, grid.width, grid.height)
 
     context.fillStyle = "Lime"
+    snakeX += speedX
+    snakeY += speedY
     context.fillRect(snakeX, snakeY, gridSquare, gridSquare)
 
     context.fillStyle ="red"
@@ -39,6 +41,9 @@ let snakeY = gridSquare * 5;
 //Declaring snake treats
 let treatX
 let treatY 
+
+let speedX = 0
+let speedY = 0
 
 //function to randomize treat position
 function treatPosition(){
