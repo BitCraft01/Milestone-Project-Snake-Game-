@@ -1,51 +1,47 @@
-let snakePosition = [168, 169, 170, 171]
-let foodPosition = 100 
-//Assigning the squares
-const squares = document.querySelectorAll(".grid .square");
+//Grid
+let grid
+let gridSquare = 25
+let row = 20
+let column = 20
+let context
 
+//Function to generate grid
+window.onload = () => {
+    grid = document.getElementById("grid")
+    grid.height = row * gridSquare
+    grid.width = column * gridSquare
+    //Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
+    context = grid.getContext("2d")
+    treatPosition()
+    
+    update()
+}
+//Load window
 
-//Apple creation
-const foodSquare = squares[foodPosition]
+/* Sources: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle
+            https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect */
+//Function to keep redrawing
+function update(){
+    context.fillStyle = "black"
+    context.fillRect(0, 0, grid.width, grid.height)
 
-foodSquare.style.cssText = 
-"background-color: green";
-"border-radius: 50%";
+    context.fillStyle = "Lime"
+    context.fillRect(snakeX, snakeY, gridSquare, gridSquare)
 
-
-//Snake creation
-for(let i of snakePosition) {
-    const snakePiece = squares[i];
-    snakePiece.style.backgroundColor = "gold";
+    context.fillStyle ="red"
+    context.fillRect(treatX, treatY, gridSquare, gridSquare)
 }
 
-//User input
+//Generating the snake
+let snakeX = gridSquare * 5;
+let snakeY = gridSquare * 5;
 
-let movements = []
+//Declaring snake treats
+let treatX
+let treatY 
 
-window.addEventListener("keydown", function (event) {
-    if(!["ArrowLeft", "ArrowRight", "ArrowDown", "ArrowUp"].includes(event.key))
-    return
-
-event.preventDefault()
-    if(event.key = "ArrwoLeft") {
-        movements.push("left")
-        return
-    }
-    
-    if(event.key = "ArrowRight") {
-        movements.push("right")
-        return
-    }
-
-    if (event.key = "ArrowDown") {
-        movements.push("down")
-        return
-    }
-
-    if(event.key = "ArrowUp"){
-        movements.push("up")
-        return
-    }
-
-
-})
+//function to randomize treat position
+function treatPosition(){
+    treatX = Math.floor(Math.random() * column) * gridSquare
+    treatY = Math.floor(Math.random() * row) * gridSquare
+}
